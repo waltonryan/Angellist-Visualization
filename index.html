@@ -1,20 +1,156 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>test</title>
-<script type="text/javascript" src="js.js">
-</script>
-<link rel="stylesheet" href="style.css" />
-<style>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="favicon.ico" />
+	<title>---------------</title>
+        <meta name="robots" content="index,follow" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="d3.v2.min.js"></script>
 
-</style>
-<script>
-</script>
+        <style>
+            .small{font-size:11px;position:relative; top:-9px; font-weight:100; color:#141414}
+            body{background:#003366}
+            /*header*/
+            .brand{color:#839D4A !important; text-shadow: 1px 1px 0 #f1f1f1 !important;}
+            #map { height: 180px; }
+            
+            svg {
+                width:600px;
+                margin-left:190px;
+}
+
+#counties path {
+  stroke: #fff;
+  stroke-width: .25px;
+}
+
+#states path {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+
+
+
+        </style>
 </head>
-<body onload="run();">
-<div id="startups">
+<body onload="init();">
 
+     <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">RACKHACK</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+     
+           </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+      </div>    
+    <p id="adminElement">You are logged in as <b>Superman</b>, <a href="logout">Sign Out</a></p>
+  
+<div id="action-strip">
+    <div id="subNav">
+        <div class="container TOO">
+       
+        <div class="clearfix"></div>
+        </div>
+    </div>
 </div>
+    <div class="container">
+       <ul class="breadcrumb">
+  <li><a href="#">Home</a> <span class="divider">/</span></li>
+  <li><a href="#">Library</a> <span class="divider">/</span></li>
+  <li class="active">Data</li>
+</ul><?php echo output_message($message); ?>
+    <svg id="main"></svg>
+
+<div class="wrapper"> <div id="map"></div>
+</div>
+</div></div>
+       <script src="bootstrap/docs/assets/js/google-code-prettify/prettify.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-transition.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-alert.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-modal.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-dropdown.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-tab.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-tooltip.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-popover.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-button.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-collapse.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-carousel.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-typeahead.js"></script>
+    <script src="bootstrap/docs/assets/js/bootstrap-affix.js"></script>
+    <script src="bootstrap/docs/assets/js/application.js"></script>
+	 <script type="text/javascript">
+$(document).ready(function() {
+    
+function init(){
+    var randData = [];
+    for (var i = 0; i < 8; i++){
+        randData.push([i*20, Math.random() * 100]);
+    }
+     svg.data([randData])
+        .append("svg:path")
+        .attr("d", line)
+        .attr("fill", "#FFF")
+        .attr("stroke", "#aaa")
+        .attr("stroke-width", 7);
+    svg.selectAll("circle")
+        .data(randData)
+       .enter().append("circle")
+        .attr("cx", function(d,i){ return d[0]; })
+        .attr("cy", function(d,i){ return d[1] + 200 })
+        .attr("fill", "#dfdfdf")
+        .attr("r", 10);
+
+    setInterval(refresh, 1200);
+}        
+
+function refresh(){
+   var randData = [];
+    for (var i = 0; i < 8; i++){
+        randData.push([i*20, Math.random() * 100]);
+    }
+    
+    svg.data([randData])
+        .select("path")
+        .transition()
+        .duration(500)
+        .attr("d", line);
+      svg.selectAll("circle")
+            .data(randData)
+      .transition()
+        .duration(500)
+        .attr("cy", function(d,i){ return d[1] + 200 });
+}
+ 
+init();
+
+);
+});
+</script>
+<footer>
+    <div>
+    <div class="col">
+        <h4></h4>
+        <ul>
+            <li><a href="">Home</a></li>
+        </ul>
+    </div>
+    <p class="clearfix"></p>
+    </div>
+    </footer>
 </body>
 </html>
